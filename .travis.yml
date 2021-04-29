@@ -1,0 +1,26 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t dusanbolek/react_test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run dusanbolek/react_test npm test -- --coverage
+
+after_succes:
+  - docker build -t dusanbolek/multi-client  ./client
+  - docker build -t dusanbolek/multi-nginx  ./nginx
+  - docker build -t dusanbolek/multi-server  ./server
+  - docker build -t dusanbolek/multi-worker  ./worker
+
+# Log in to Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+# push docker images into Docker Hub
+  - docker push dusanbolek/multi-client
+  - docker push dusanbolek/multi-nginx
+  - docker push dusanbolek/multi-server
+  - docker push dusanbolek/multi-worker
+  
+
