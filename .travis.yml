@@ -19,8 +19,8 @@ after_succes:
 
 # push docker images into Docker Hub
   - docker push dusanbolek/multi-client
-  - docker push dusanbolek/multi-nginx
-  - docker push dusanbolek/multi-server
-  - docker push dusanbolek/multi-worker
+#  - docker push dusanbolek/multi-nginx
+#  - docker push dusanbolek/multi-server
+#  - docker push dusanbolek/multi-worker
   
 
