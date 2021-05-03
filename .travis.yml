@@ -8,7 +8,7 @@ before_install:
 script:
   - docker run dusanbolek/react_test npm test -- --coverage
 
-after_succes:
+after_success:
   - docker build -t dusanbolek/multi-client  ./client
   - docker build -t dusanbolek/multi-nginx  ./nginx
   - docker build -t dusanbolek/multi-server  ./server
