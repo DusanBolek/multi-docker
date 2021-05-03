@@ -4,7 +4,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t dusanbolek/react_test -f ./client/Dockerfile.dev ./client
+  - docker build -t dusanbolek/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   #- docker run dusanbolek/react_test npm test -- --coverage
